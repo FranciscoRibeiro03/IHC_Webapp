@@ -1,0 +1,29 @@
+/* Bigger Window */
+@media (min-width: 992px) {
+	.navbar-icons-container {
+		order: 2;
+	}
+
+	.navbar-collapse {
+		order: 1;
+	}
+
+	.navbar-toggler-orderer {
+		order: 3;
+	}
+}
+
+/* Smaller Window */
+@media (max-width: 992px) {
+	.navbar-icons-container {
+		order: 1;
+	}
+
+	.navbar-collapse {
+		order: 2;
+	}
+
+	.navbar-toggler-orderer .navbar-toggler {
+		order: 3;
+	}
+}

@@ -1,0 +1,27 @@
+<div class="d-flex align-items-center">
+  <div class="mx-3 theme-switcher link-body-emphasis" style="font-size: 25px; cursor: pointer" onclick="toggleTheme()">
+    <!-- No default icon :( -->
+  </div>
+  <% if (isAuthenticated) { %>
+    <div class="dropdown mx-3 link-body-emphasis">
+      <a href="#" class="link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-person-circle" style="font-size: 25px; cursor: pointer"></i>
+      </a>
+      <ul class="dropdown-menu text-small dropdown-menu-end" id="nav-drop">
+        <li>
+          <span class="dropdown-item-text">
+            <strong>admin</strong>
+          </span>
+        </li>
+        <li>
+          <hr class="dropdown-divider" />
+        </li>
+        <li>
+          <form method="POST" action="/logout">
+            <button type="submit" class="dropdown-item">Sign out</button>
+          </form>
+        </li>
+      </ul>
+    </div>
+  <% } %>
+</div>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./components/head.ejs') %>
+  <link href="/css/signinup.css" rel="stylesheet" />
+  <script src="/js/password_visibility.js" defer></script>
+  </head>
+
+  <body>
+    <%- include('./components/navbar.ejs') %>
+    <main class="form-signin w-100 m-auto row align-items-center">
+      <form action="/login" method="POST" id="login-form">
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+        <div class="form-floating">
+          <input
+            class="form-control first <%= error ? 'is-invalid' : '' %>"
+            id="username"
+            placeholder="name@example.com"
+            name="username"
+            value="<%= old.username %>"
+            autofocus
+            type="text"
+            maxlength="128"
+            required
+          />
+          <label for="username">Username</label>
+        </div>
+        <div class="form-floating">
+          <input
+            type="password"
+            class="form-control last <%= error ? 'is-invalid' : '' %>"
+            id="password"
+            placeholder="Password"
+            name="password"
+            value="<%= old.password %>"
+            maxlength="128"
+            required
+          />
+          <label for="password">Password</label>
+          <span
+            class="position-absolute top-50 end-0 translate-middle-y me-3"
+            id="togglePassword"
+            onclick="togglePasswordVisibility('password', this)"
+            style="cursor: pointer;"
+          >
+            <i class="bi bi-eye"></i>
+          </span>
+        </div>
+        </div>
+        <button class="btn btn-primary w-100 py-2 mt-3" type="submit" id="form-button">Sign in</button>
+      </form>
+    </main>
+    <%- include('./components/footer.ejs') %>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+header,
+footer {
+    flex-shrink: 0;
+}
+
+.fullscreen {
+    height: 100vh;
+    flex-direction: column;
+    padding-top: 3rem;
+}
+
+@media print {
+    header {
+        display: none;
+    }
+
+    .no-print {
+        display: none;
+    }
+}

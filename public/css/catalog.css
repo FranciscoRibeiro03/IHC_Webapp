@@ -1,0 +1,15 @@
+.item {
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: all 0.2s ease-in-out;
+}
+
+.item:hover img {
+  transform: scale(1.05);
+}
