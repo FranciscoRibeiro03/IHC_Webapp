@@ -127,11 +127,18 @@
               <h1 class="modal-title fs-5" id="addMediaModalLabel"></h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-              <input type="text" class="form-control" id="mediaUrl" placeholder="URL" required>
+            <div id="modalBody" class="modal-body">
+              <nav class="nav nav-tabs mb-3">
+                <a id="enterUrlLink" class="nav-link active" style="cursor: pointer;" onclick="enterUrlTab()">Enter URL</a>
+                <a id="uploadFileLink" class="nav-link" style="cursor: pointer;" onclick="uploadFileTab()">Upload a File</a>
+              </nav>
+              <div id="modalInputs">
+                <input type="text" class="form-control" id="mediaUrl" placeholder="URL" style="display: block;" required>
+                <input type="file" class="form-control" id="mediaFile" style="display: none;" required>
+              </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button id="modalCloseButton" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               <button id="modalSubmitButton" type="button" class="btn btn-primary">Submit</button>
             </div>
           </div>

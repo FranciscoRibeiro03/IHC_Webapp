@@ -132,6 +132,11 @@ async function addImage() {
     const modalSubmitButton = document.getElementById('modalSubmitButton');
     modalSubmitButton.disabled = true;
 
+    modalSubmitButton.innerHTML = 'Submitting...';
+    modalSubmitButton.innerHTML += `
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    `;
+
     const modalInputs = document.getElementById('modalInputs');
     let type = '';
     for (const input of modalInputs.children) {
@@ -155,6 +160,7 @@ async function addImage() {
         else
             sendToast('Please enter a URL.', 'danger');
         modalSubmitButton.disabled = false;
+        modalSubmitButton.innerHTML = "Submit";
         return;
     }
 
@@ -162,6 +168,7 @@ async function addImage() {
     if (!isImage) {
         sendToast('The URL you entered is not an image.', 'danger');
         modalSubmitButton.disabled = false;
+        modalSubmitButton.innerHTML = "Submit";
         return;
     }
 
@@ -180,6 +187,7 @@ async function addImage() {
 
     modalObject.hide();
     modalSubmitButton.disabled = false;
+    modalSubmitButton.innerHTML = "Submit";
     for (const input of modalInputs.children) {
         input.value = '';
     }
@@ -194,6 +202,11 @@ function openVideoModal() {
 async function addVideo() {
     const modalSubmitButton = document.getElementById('modalSubmitButton');
     modalSubmitButton.disabled = true;
+
+    modalSubmitButton.innerHTML = 'Submitting...';
+    modalSubmitButton.innerHTML += `
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    `;
 
     const modalInputs = document.getElementById('modalInputs');
     let type = '';
@@ -218,6 +231,7 @@ async function addVideo() {
         else
             sendToast('Please enter a URL.', 'danger');
         modalSubmitButton.disabled = false;
+        modalSubmitButton.innerHTML = "Submit";
         return;
     }
 
@@ -225,6 +239,7 @@ async function addVideo() {
     if (!isVideo) {
         sendToast('The URL you entered is not a video.', 'danger');
         modalSubmitButton.disabled = false;
+        modalSubmitButton.innerHTML = "Submit";
         return;
     }
 
@@ -243,6 +258,7 @@ async function addVideo() {
 
     modalObject.hide();
     modalSubmitButton.disabled = false;
+    modalSubmitButton.innerHTML = "Submit";
     for (const input of modalInputs.children) {
         input.value = '';
     }
