@@ -22,7 +22,7 @@ export default class ExpressApp {
         this.app.use(cors());
 
         this.app.use((req, res, next) => {
-            express.json()(req, res, err => {
+            express.json({ limit: '100mb' })(req, res, err => {
                 if (err) {
                     Logger.error(err);
                     return res.status(400).send('Invalid Body');

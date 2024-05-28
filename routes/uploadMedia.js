@@ -23,7 +23,7 @@ export default class extends Route {
 
         const { file } = request.body;
 
-        const fileData = file.data.replace(/^data:image\/\w+;base64,/, '');
+        const fileData = file.data.replace(/^data:(image|video)\/\w+;base64,/, '');
 
         const formData = new FormData();
         formData.append('image', fileData);
@@ -50,6 +50,23 @@ export default class extends Route {
             Logger.error('Failed to parse Imgur response');
             Logger.error(imgurJson);
             return response.status(500).end();
+        }
+
+        if (imgurJson.data.processing && imgurJson.data.processing.status) {
+            const mediaHash = imgurJson.data.id;
+            let imgurStatus = imgurJson.data.processing.status;
+            while (imgurStatus !== "completed") {
+                await new Promise(resolve => setTimeout(resolve, 500));
+                const imgurResponse = await fetch(`https://api.imgur.com/3/image/${mediaHash}`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Client-ID ${IMGUR_CLIENT_ID}`
+                    },
+                    redirect: 'follow'
+                }).catch(() => null);
+                const imgurJson = await imgurResponse.json().catch(() => null);
+                imgurStatus = imgurJson.data.processing.status;
+            }
         }
 
         return response.status(201).send(imgurJson.data.link);
